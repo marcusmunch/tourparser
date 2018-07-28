@@ -9,7 +9,7 @@ def get_riders(link):
     html = response.read()
     soup = BeautifulSoup(html, "html.parser")
 
-    rider_list = soup.find("div", {"class": "list--competitors"})
+    rider_list = soup.select_one("div.list--competitors")
 
     for rider in rider_list.find_all("span", {"class": "runner"}):
         link = rider.a['href']
