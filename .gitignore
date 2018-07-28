@@ -105,3 +105,9 @@ venv.bak/
 
 # PyCharm .idea/ folder
 .idea/
+
+# Data output
+data
+
+# Data output
+data/
