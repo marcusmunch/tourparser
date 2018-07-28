@@ -29,7 +29,7 @@ def collect_rider(rider):
 
     print("Now writing {}...".format(rider["persona"])),
 
-    with open("data/{}/{}.html".format(rider['team'], rider['name']), 'w') as f:
+    with open("data/html/{}/{}.html".format(rider['team'], rider['name']), 'w') as f:
         f.write(html)
 
     print("Done!")
@@ -39,7 +39,7 @@ def main():
     riders = get_riders("https://www.letour.fr/en/riders")
 
     for rider in riders:
-        team_path = "./data/" + rider['team']
+        team_path = "./data/html/" + rider['team']
         if not os.path.exists(team_path):
             os.mkdir(team_path)
         collect_rider(rider)
@@ -48,4 +48,6 @@ def main():
 if __name__ == "__main__":
     if not os.path.exists('data'):
         os.mkdir('data')
+    if not os.path.exists('data/html'):
+        os.mkdir('data/html')
     main()
