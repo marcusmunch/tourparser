@@ -1,5 +1,4 @@
 import csv
-import glob
 import os
 
 from bs4 import BeautifulSoup
@@ -27,8 +26,9 @@ def main():
     if not os.path.exists('data/csv'):
         os.mkdir('data/csv')
 
-    for rider_file in glob.glob("./data/*/*"):
-        extract_table(rider_file)
+    for subdir in os.listdir(os.path.join('data', 'html')):
+        for rider_file in os.listdir(os.path.join('data', 'html', subdir)):
+            extract_table(os.path.join('data', 'html', subdir, rider_file))
 
 
 if __name__ == "__main__":
